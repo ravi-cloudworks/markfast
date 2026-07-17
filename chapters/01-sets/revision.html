@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sets — Quick Revision</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#10142A; --panel:#181D3B; --panel-2:#20264A;
+    --text:#EEEFF7; --muted:#9FA3C4; --gold:#E8B84B; --teal:#5FD4C4; --rose:#E86A82;
+    --line: rgba(255,255,255,0.08); --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background: var(--ink); color: var(--text); font-family:'Inter', sans-serif; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 4vh 1.5rem 6vh; }
+
+  .top-nav { display:flex; align-items:center; gap:0.7em; margin-bottom: 1.6rem; }
+  .top-nav img { height: 26px; }
+  .top-nav a.switch-link, .top-nav span.switch-link {
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; color: var(--muted);
+    background: var(--panel-2); border:1px solid var(--line); border-radius:6px;
+    padding:0.3em 0.6em; text-decoration:none;
+  }
+  .top-nav a.switch-link:hover { color: var(--teal); border-color: var(--teal); }
+  .top-nav .switch-link.active { color: var(--ink); background: var(--teal); border-color: var(--teal); font-weight:600; }
+
+  .eyebrow {
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.12em;
+    text-transform:uppercase; color: var(--gold); display:block; margin-bottom:0.5rem;
+  }
+  h1 { font-family:'Fraunces', serif; font-weight:600; font-size: clamp(1.6rem,4vw,2.3rem); margin:0 0 0.4rem; }
+  .sub { color: var(--muted); font-size:0.95rem; max-width:60ch; margin-bottom: 1.8rem; }
+
+  .top-trap {
+    background: linear-gradient(135deg, rgba(232,184,75,0.14), rgba(232,184,75,0.03));
+    border:1px solid rgba(232,184,75,0.4); border-radius: var(--radius);
+    padding: 1.1rem 1.3rem; margin-bottom: 2rem;
+  }
+  .top-trap .k { font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color: var(--gold); }
+  .top-trap p { margin: 0.4em 0 0; font-size: 0.95rem; line-height:1.5; }
+
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card {
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+  }
+  .card .mod-k { font-family:'JetBrains Mono', monospace; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color: var(--teal); }
+  .card h2 { font-family:'Fraunces', serif; font-weight:600; font-size: 1.15rem; margin: 0.3em 0 0.6em; }
+
+  .tags { margin-bottom: 0.7em; }
+  .tag {
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; color: var(--teal);
+    background: var(--panel-2); border-radius:6px; padding:0.2em 0.5em;
+    display:inline-block; margin: 0.15em 0.25em 0.15em 0;
+  }
+
+  .formula {
+    font-size: 0.85rem; color: var(--text); background: rgba(95,212,196,0.08);
+    border-left: 3px solid var(--teal); border-radius:6px; padding: 0.5em 0.7em; margin-bottom: 0.7em;
+  }
+
+  .traps { margin: 0; padding: 0; list-style: none; }
+  .traps li {
+    font-size: 0.82rem; color: var(--muted); line-height:1.45;
+    padding-left: 1.3em; position: relative; margin-bottom: 0.5em;
+  }
+  .traps li::before { content: "⚡"; position:absolute; left:0; top:0; font-size:0.85em; }
+  .traps li strong { color: var(--rose); }
+
+  footer { margin-top: 1rem; text-align:center; }
+  footer a { color: var(--teal); font-family:'JetBrains Mono', monospace; font-size:0.75rem; text-decoration:none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-nav">
+    <a href="../../class-11-math.html"><img src="../../assets/logo.png" alt="Mark Fast — back to chapters"></a>
+    <a class="switch-link" href="content.html">📘 Chapter</a>
+    <a class="switch-link" href="questions.html">✍️ Book Questions</a>
+    <span class="switch-link active">🗂️ Quick Revision</span>
+  </div>
+
+  <span class="eyebrow">Class XI · Chapter 1 · 5-Minute Recap</span>
+  <h1>Sets — Formula &amp; Trap Sheet</h1>
+  <p class="sub">Every notation, formula, and trap across all 6 modules, on one page. Scan this the night before — if something here doesn't click, go back to that module's mastery check.</p>
+
+  <div class="top-trap">
+    <span class="k">⚠️ The #1 trap in this chapter</span>
+    <p>$\varnothing$ has <strong>0</strong> elements. $\{0\}$ has <strong>1</strong> element (the number zero). $\{\varnothing\}$ also has <strong>1</strong> element (the empty set, sitting inside another set). All three are different objects — this single confusion costs more marks in this chapter than anything else.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="mod-k">Module 1</span>
+      <h2>What is a Set?</h2>
+      <div class="tags">
+        <span class="tag">$a \in A$</span>
+        <span class="tag">$b \notin A$</span>
+        <span class="tag">roster form</span>
+        <span class="tag">set-builder form</span>
+      </div>
+      <div class="formula">Roster: $\{2,4,6\}$ &nbsp;·&nbsp; Set-builder: $\{x : x \text{ is even}, x<7\}$</div>
+      <ul class="traps">
+        <li>A description using a <strong>subjective word</strong> ("best", "most talented", "renowned") is NOT a set.</li>
+        <li>Order and repetition don't matter in roster form: $\{1,2,3\} = \{3,2,1\} = \{2,2,1,3,3\}$.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 2</span>
+      <h2>Types of Sets</h2>
+      <div class="tags">
+        <span class="tag">$\varnothing$</span>
+        <span class="tag">$n(S)$</span>
+        <span class="tag">finite / infinite</span>
+        <span class="tag">equal sets</span>
+      </div>
+      <div class="formula">$\varnothing \ne \{0\} \ne \{\varnothing\}$ — zero, one, and one elements respectively</div>
+      <ul class="traps">
+        <li>$\varnothing$ is considered <strong>FINITE</strong> — it has a definite count (zero).</li>
+        <li>To check $A=B$: verify BOTH directions — every element of A in B, <strong>and</strong> every element of B in A.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 3</span>
+      <h2>Subsets &amp; Intervals</h2>
+      <div class="tags">
+        <span class="tag">$A \subset B$</span>
+        <span class="tag">$A \not\subset B$</span>
+        <span class="tag">$(a,b)$ open</span>
+        <span class="tag">$[a,b]$ closed</span>
+      </div>
+      <div class="formula">n elements $\Rightarrow$ exactly $2^n$ subsets</div>
+      <ul class="traps">
+        <li>$\varnothing \subset A$ is <strong>ALWAYS</strong> true — write it as your first line in any subset question.</li>
+        <li>$a \in A$ (element) vs. $\{a\} \subset A$ (subset) — mixing these two up is the single biggest mark-loser in this topic.</li>
+        <li>$[a,b)$ excludes $b$; $(a,b]$ excludes $a$ — the bracket shape tells you which side is closed.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 4</span>
+      <h2>Venn Diagrams &amp; Universal Set</h2>
+      <div class="tags">
+        <span class="tag">$U$</span>
+        <span class="tag">rectangle = U</span>
+        <span class="tag">circle = subset</span>
+      </div>
+      <div class="formula">U is drawn as a rectangle; every subset is a circle inside it — never the reverse</div>
+      <ul class="traps">
+        <li>There's no single "correct" $U$ — if asked to pick one, choose the <strong>smallest</strong> set containing everything discussed.</li>
+        <li>Elements outside every circle still belong inside the rectangle (inside $U$, outside all subsets).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 5</span>
+      <h2>Union, Intersection &amp; Difference</h2>
+      <div class="tags">
+        <span class="tag">$A \cup B$</span>
+        <span class="tag">$A \cap B$</span>
+        <span class="tag">$A - B$</span>
+        <span class="tag">disjoint: $A\cap B=\varnothing$</span>
+      </div>
+      <div class="formula">$A \cap (B \cup C) = (A\cap B) \cup (A \cap C)$ — distributive law</div>
+      <ul class="traps">
+        <li>$A-B \ne B-A$ — set difference is <strong>NOT commutative</strong>, exactly like number subtraction.</li>
+        <li>If $B \subset A$: shortcut — $A \cup B = A$ and $A \cap B = B$. Skip computing, just write the answer.</li>
+        <li>$A-B$, $A\cap B$, $B-A$ are always mutually disjoint pieces that together make up $A \cup B$.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 6</span>
+      <h2>Complement &amp; De Morgan's Laws</h2>
+      <div class="tags">
+        <span class="tag">$A'$</span>
+        <span class="tag">$(A')'=A$</span>
+        <span class="tag">$\varnothing'=U$</span>
+        <span class="tag">$U'=\varnothing$</span>
+      </div>
+      <div class="formula">$(A \cup B)' = A' \cap B'$ &nbsp;·&nbsp; $(A \cap B)' = A' \cup B'$ — the operator FLIPS</div>
+      <ul class="traps">
+        <li><strong>"Complement flips the operator"</strong> — the single most-flipped formula in board exams. Union becomes intersection, every time.</li>
+        <li>Forgot the law mid-exam? Just compute directly: $A' = U - A$.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="content.html">← Back to the full chapter deck</a>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });
+</script>
+</body>
+</html>
