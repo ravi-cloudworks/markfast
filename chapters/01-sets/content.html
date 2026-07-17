@@ -194,7 +194,21 @@
     align-items: flex-start;
     gap: 0.25em;
   }
-  .diagram-wrap svg { background: transparent; max-width: 260px; height: auto; }
+  .diagram-wrap svg { background: transparent; max-width: 480px; width: 100%; height: auto; }
+
+  .slide-split {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.4em;
+  }
+  .slide-split .slide-text { flex: 0 0 40%; min-width: 0; }
+  .slide-split .slide-diagram {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .slide-split .slide-diagram .diagram-wrap { align-items: center; }
   .diagram-caption {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.55em;
@@ -329,15 +343,15 @@ function moduleSlidesHTML(mod){
 
   // Concept slides
   (mod.concepts || []).forEach(c => {
-    html += `
-      <section>
+    const textBlock = `
         <span class="eyebrow">${mod.eyebrow}</span>
         <h3>${c.heading}</h3>
         <div class="card">
           <p>${renderMarkdownish(c.body)}</p>
-        </div>
-        ${renderDiagram(c.diagram)}
-      </section>`;
+        </div>`;
+    html += c.diagram
+      ? `<section><div class="slide-split"><div class="slide-text">${textBlock}</div><div class="slide-diagram">${renderDiagram(c.diagram)}</div></div></section>`
+      : `<section>${textBlock}</section>`;
   });
 
   // Tricks slide
@@ -362,16 +376,16 @@ function moduleSlidesHTML(mod){
 
   // Example slides
   (mod.examples || []).forEach(ex => {
-    html += `
-      <section>
+    const textBlock = `
         <span class="eyebrow">${mod.eyebrow} · Worked Example</span>
         <div class="card">
           <div class="example-q">${renderMarkdownish(ex.question)}</div>
           ${ex.steps.map(s => `<div class="example-step">→ ${renderMarkdownish(s)}</div>`).join('')}
           <div class="example-answer">${renderMarkdownish(ex.answer)}</div>
-        </div>
-        ${renderDiagram(ex.diagram)}
-      </section>`;
+        </div>`;
+    html += ex.diagram
+      ? `<section><div class="slide-split"><div class="slide-text">${textBlock}</div><div class="slide-diagram">${renderDiagram(ex.diagram)}</div></div></section>`
+      : `<section>${textBlock}</section>`;
   });
 
   // Quiz intro + quiz question slides (vertical stack)

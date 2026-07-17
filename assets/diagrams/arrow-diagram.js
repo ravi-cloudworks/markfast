@@ -14,10 +14,22 @@ function renderArrowDiagram(cfg){
   const topPad = 30;
   const rows = Math.max(left.length, right.length, 1);
   const bodyH = topPad * 2 + (rows - 1) * rowH;
-  const width = 340;
 
-  const leftCx = 95, rightCx = width - 95;
-  const ovalRx = 55, ovalRy = bodyH / 2 - 6;
+  // Reserve enough width for the longest label on each side — a fixed
+  // canvas width clips longer names (e.g. "Chandra") past the SVG edge.
+  const charW = 7.6; // ~ JetBrains Mono at font-size 13
+  function labelSpace(labels){
+    const longest = labels.reduce((m, l) => Math.max(m, String(l).length), 1);
+    return longest * charW + 14;
+  }
+  const leftLabelSpace = labelSpace(left);
+  const rightLabelSpace = labelSpace(right);
+  const ovalRx = 55, ovalGap = 90;
+
+  const leftCx = leftLabelSpace + ovalRx;
+  const rightCx = leftCx + ovalRx + ovalGap + ovalRx;
+  const width = rightCx + ovalRx + rightLabelSpace;
+  const ovalRy = bodyH / 2 - 6;
   const dotLeftX = leftCx + ovalRx - 14;
   const dotRightX = rightCx - ovalRx + 14;
 

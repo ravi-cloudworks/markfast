@@ -13,8 +13,8 @@ function renderCartesianGrid(cfg){
   const rowY = ys.map((_, i) => height - padBottom - cellH * (i + 0.5));
 
   let gridLines = '';
-  colX.forEach(x => { gridLines += `<line x1="${x}" y1="${padTop}" x2="${x}" y2="${height - padBottom}" stroke="var(--line)" stroke-width="1"/>`; });
-  rowY.forEach(y => { gridLines += `<line x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`; });
+  colX.forEach(x => { gridLines += `<line x1="${x}" y1="${padTop}" x2="${x}" y2="${height - padBottom}" stroke="#4A5178" stroke-width="1"/>`; });
+  rowY.forEach(y => { gridLines += `<line x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="#4A5178" stroke-width="1"/>`; });
 
   let dots = '';
   colX.forEach(x => { rowY.forEach(y => { dots += `<circle cx="${x}" cy="${y}" r="3" fill="#5FD4C4"/>`; }); });
