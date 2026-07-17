@@ -198,17 +198,18 @@
 
   .slide-split {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 1.4em;
   }
-  .slide-split .slide-text { flex: 0 0 40%; min-width: 0; }
+  .slide-split .slide-text { flex: 0 0 40%; min-width: 0; display: flex; flex-direction: column; }
+  .slide-split .slide-text .card { flex: 1; display: flex; align-items: center; }
   .slide-split .slide-diagram {
     flex: 1 1 auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .slide-split .slide-diagram .diagram-wrap { align-items: center; }
+  .slide-split .slide-diagram .diagram-wrap { align-items: center; width: 100%; }
   .diagram-caption {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.55em;
@@ -343,15 +344,13 @@ function moduleSlidesHTML(mod){
 
   // Concept slides
   (mod.concepts || []).forEach(c => {
-    const textBlock = `
+    const heading = `
         <span class="eyebrow">${mod.eyebrow}</span>
-        <h3>${c.heading}</h3>
-        <div class="card">
-          <p>${renderMarkdownish(c.body)}</p>
-        </div>`;
+        <h3>${c.heading}</h3>`;
+    const cardBlock = `<div class="card"><p>${renderMarkdownish(c.body)}</p></div>`;
     html += c.diagram
-      ? `<section><div class="slide-split"><div class="slide-text">${textBlock}</div><div class="slide-diagram">${renderDiagram(c.diagram)}</div></div></section>`
-      : `<section>${textBlock}</section>`;
+      ? `<section>${heading}<div class="slide-split"><div class="slide-text">${cardBlock}</div><div class="slide-diagram">${renderDiagram(c.diagram)}</div></div></section>`
+      : `<section>${heading}${cardBlock}</section>`;
   });
 
   // Tricks slide
@@ -376,16 +375,16 @@ function moduleSlidesHTML(mod){
 
   // Example slides
   (mod.examples || []).forEach(ex => {
-    const textBlock = `
-        <span class="eyebrow">${mod.eyebrow} · Worked Example</span>
+    const heading = `<span class="eyebrow">${mod.eyebrow} · Worked Example</span>`;
+    const cardBlock = `
         <div class="card">
           <div class="example-q">${renderMarkdownish(ex.question)}</div>
           ${ex.steps.map(s => `<div class="example-step">→ ${renderMarkdownish(s)}</div>`).join('')}
           <div class="example-answer">${renderMarkdownish(ex.answer)}</div>
         </div>`;
     html += ex.diagram
-      ? `<section><div class="slide-split"><div class="slide-text">${textBlock}</div><div class="slide-diagram">${renderDiagram(ex.diagram)}</div></div></section>`
-      : `<section>${textBlock}</section>`;
+      ? `<section>${heading}<div class="slide-split"><div class="slide-text">${cardBlock}</div><div class="slide-diagram">${renderDiagram(ex.diagram)}</div></div></section>`
+      : `<section>${heading}${cardBlock}</section>`;
   });
 
   // Quiz intro + quiz question slides (vertical stack)

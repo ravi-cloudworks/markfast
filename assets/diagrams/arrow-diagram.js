@@ -29,31 +29,61 @@ function renderArrowDiagram(cfg){
   const leftCx = leftLabelSpace + ovalRx;
   const rightCx = leftCx + ovalRx + ovalGap + ovalRx;
   const width = rightCx + ovalRx + rightLabelSpace;
-  const ovalRy = bodyH / 2 - 6;
-  const dotLeftX = leftCx + ovalRx - 14;
-  const dotRightX = rightCx - ovalRx + 14;
+  const ovalCy = bodyH / 2;
+  const ovalRy = ovalCy - 6;
+
+  // How far a dot can sit from the oval's own centre-line at height y and
+  // still be safely inside the ellipse (it narrows away from the centre).
+  function safeInset(y, desired){
+    const ratio = Math.min(1, Math.abs(y - ovalCy) / ovalRy);
+    const localHalfWidth = ovalRx * Math.sqrt(Math.max(0, 1 - ratio * ratio));
+    return Math.min(desired, Math.max(localHalfWidth - 10, 6));
+  }
 
   function yFor(i, n){
-    if(n <= 1) return bodyH / 2;
+    if(n <= 1) return ovalCy;
     const span = bodyH - topPad * 2;
     return topPad + (span * i) / (n - 1);
   }
 
-  const leftDots = left.map((label, i) => ({ x: dotLeftX, y: yFor(i, left.length), label }));
-  const rightDots = right.map((label, i) => ({ x: dotRightX, y: yFor(i, right.length), label }));
+  const dotInset = 16; // how far in from the oval's centre-line each dot sits
+  const labelGap = 10; // gap between a dot and its own label
+
+  const leftDots = left.map((label, i) => {
+    const y = yFor(i, left.length);
+    const x = leftCx - safeInset(y, dotInset);
+    return { x, y, label };
+  });
+  const rightDots = right.map((label, i) => {
+    const y = yFor(i, right.length);
+    const x = rightCx + safeInset(y, dotInset);
+    return { x, y, label };
+  });
 
   const leftDotsSVG = leftDots.map(d => `
     <circle cx="${d.x}" cy="${d.y}" r="3" fill="#5FD4C4"/>
-    <text x="${leftCx - ovalRx - 8}" y="${d.y + 4}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="13" fill="#EEEFF7">${d.label}</text>`).join('');
+    <text x="${d.x - labelGap}" y="${d.y + 4}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="13" fill="#EEEFF7">${d.label}</text>`).join('');
 
   const rightDotsSVG = rightDots.map(d => `
     <circle cx="${d.x}" cy="${d.y}" r="3" fill="#E8B84B"/>
-    <text x="${rightCx + ovalRx + 8}" y="${d.y + 4}" font-family="JetBrains Mono, monospace" font-size="13" fill="#EEEFF7">${d.label}</text>`).join('');
+    <text x="${d.x + labelGap}" y="${d.y + 4}" font-family="JetBrains Mono, monospace" font-size="13" fill="#EEEFF7">${d.label}</text>`).join('');
 
+  // Each arrow is a plain connecting line, plus a short stub at the
+  // midpoint carrying the arrowhead marker — so the arrowhead reads as
+  // "pointing along the path" instead of jamming into the destination dot.
   const arrowsSVG = pairs.map(([li, ri]) => {
     const a = leftDots[li], b = rightDots[ri];
     if(!a || !b) return '';
-    return `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="#EEEFF7" stroke-width="1.3" opacity="0.85" marker-end="url(#arrowhead-${uid})"/>`;
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const len = Math.sqrt(dx * dx + dy * dy) || 1;
+    const ux = dx / len, uy = dy / len;
+    const midX = (a.x + b.x) / 2, midY = (a.y + b.y) / 2;
+    const half = 6;
+    const stubX1 = midX - ux * half, stubY1 = midY - uy * half;
+    const stubX2 = midX + ux * half, stubY2 = midY + uy * half;
+    return `
+      <line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="#EEEFF7" stroke-width="1.3" opacity="0.85"/>
+      <line x1="${stubX1.toFixed(1)}" y1="${stubY1.toFixed(1)}" x2="${stubX2.toFixed(1)}" y2="${stubY2.toFixed(1)}" stroke="#EEEFF7" stroke-width="1.3" marker-end="url(#arrowhead-${uid})"/>`;
   }).join('');
 
   const height = bodyH + 30;
@@ -68,8 +98,8 @@ function renderArrowDiagram(cfg){
       <text x="${leftCx}" y="18" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#5FD4C4">${labelLeft}</text>
       <text x="${rightCx}" y="18" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#E8B84B">${labelRight}</text>
       <g transform="translate(0,24)">
-        <ellipse cx="${leftCx}" cy="${bodyH/2}" rx="${ovalRx}" ry="${ovalRy}" fill="var(--panel)" stroke="#5FD4C4" stroke-width="1.5"/>
-        <ellipse cx="${rightCx}" cy="${bodyH/2}" rx="${ovalRx}" ry="${ovalRy}" fill="var(--panel)" stroke="#E8B84B" stroke-width="1.5"/>
+        <ellipse cx="${leftCx}" cy="${ovalCy}" rx="${ovalRx}" ry="${ovalRy}" fill="var(--panel)" stroke="#5FD4C4" stroke-width="1.5"/>
+        <ellipse cx="${rightCx}" cy="${ovalCy}" rx="${ovalRx}" ry="${ovalRy}" fill="var(--panel)" stroke="#E8B84B" stroke-width="1.5"/>
         ${arrowsSVG}
         ${leftDotsSVG}
         ${rightDotsSVG}
