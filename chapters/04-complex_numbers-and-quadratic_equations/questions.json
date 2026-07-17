@@ -1,0 +1,186 @@
+{
+  "courseTitle": "Complex Numbers & Quadratic Equations — Book-Back Questions & Exam Practice",
+  "modules": [
+    {
+      "moduleId": "M1",
+      "title": "Exercise 4.1 — Algebra of Complex Numbers",
+      "eyebrow": "Exercise 4.1 · 14 Questions",
+      "bookQuestions": [
+        {
+          "number": "Q1",
+          "quick": { "q": "$(5i)\\left(-\\frac{3}{5}i\\right) = ?$", "options": ["3", "-3", "3i", "-3i"], "correct": 0 },
+          "prompt": "Express the complex number given in the exercises 1 to 10 in the form $a+ib$:\n$(5i)\\left(-\\frac{3}{5}i\\right)$",
+          "solution": "$(5i)\\left(-\\frac{3}{5}i\\right) = -3i^2 = -3(-1) = 3$\nAnswer: $3+i0$"
+        },
+        {
+          "number": "Q2",
+          "quick": { "q": "$i^9+i^{19} = ?$", "options": ["0", "2i", "-2i", "2"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $i^9+i^{19}$",
+          "solution": "$i^9=i^8\\cdot i=(i^4)^2\\cdot i=i$. $i^{19}=i^{16}\\cdot i^3=(i^4)^4\\cdot i^3=-i$.\n$i+(-i)=0$\nAnswer: $0+i0$"
+        },
+        {
+          "number": "Q3",
+          "quick": { "q": "$i^{-39} = ?$", "options": ["i", "-i", "1", "-1"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $i^{-39}$",
+          "solution": "$i^{-39}=\\frac{1}{i^{39}}$. $i^{39}=i^{36}\\cdot i^3=(i^4)^9\\cdot i^3=-i$.\n$\\frac{1}{-i}=\\frac{1}{-i}\\times\\frac{i}{i}=\\frac{i}{-i^2}=\\frac{i}{1}=i$\nAnswer: $0+i$"
+        },
+        {
+          "number": "Q4",
+          "quick": { "q": "$3(7+i7)+i(7+i7) = ?$", "options": ["14+28i", "21+28i", "14+21i", "7+28i"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $3(7+i7)+i(7+i7)$",
+          "solution": "$3(7+i7)=21+21i$. $i(7+i7)=7i+7i^2=7i-7$.\nSum: $(21-7)+(21+7)i=14+28i$\nAnswer: $14+i28$"
+        },
+        {
+          "number": "Q5",
+          "quick": { "q": "$(1-i)-(-1+i6) = ?$", "options": ["2-7i", "2+7i", "-7i", "2-i"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $(1-i)-(-1+i6)$",
+          "solution": "$(1-i)-(-1+i6) = 1-i+1-6i = 2-7i$\nAnswer: $2-i7$"
+        },
+        {
+          "number": "Q6",
+          "quick": { "q": "$\\left(\\frac{1}{5}+i\\frac{2}{5}\\right)-\\left(4+i\\frac{5}{2}\\right) = ?$", "options": ["$-\\frac{19}{5}-i\\frac{21}{10}$", "$\\frac{19}{5}+i\\frac{21}{10}$", "$-\\frac{19}{5}+i\\frac{21}{10}$", "$4+i2$"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $\\left(\\frac{1}{5}+i\\frac{2}{5}\\right)-\\left(4+i\\frac{5}{2}\\right)$",
+          "solution": "Real: $\\frac{1}{5}-4=\\frac{1-20}{5}=-\\frac{19}{5}$\nImaginary: $\\frac{2}{5}-\\frac{5}{2}=\\frac{4-25}{10}=-\\frac{21}{10}$\nAnswer: $-\\frac{19}{5}-i\\frac{21}{10}$"
+        },
+        {
+          "number": "Q7",
+          "quick": { "q": "The real part of $\\left[\\left(\\frac{1}{3}+i\\frac{7}{3}\\right)+\\left(4+i\\frac{1}{3}\\right)\\right]-\\left(-\\frac{4}{3}+i\\right)$ is:", "options": ["$17/3$", "$13/3$", "$5/3$", "1"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $\\left[\\left(\\frac{1}{3}+i\\frac{7}{3}\\right)+\\left(4+i\\frac{1}{3}\\right)\\right]-\\left(-\\frac{4}{3}+i\\right)$",
+          "solution": "Inner sum: real $\\frac{1}{3}+4=\\frac{13}{3}$; imaginary $\\frac{7}{3}+\\frac{1}{3}=\\frac{8}{3}$. So inner $=\\frac{13}{3}+i\\frac{8}{3}$.\nSubtract $\\left(-\\frac{4}{3}+i\\right)$: real $\\frac{13}{3}+\\frac{4}{3}=\\frac{17}{3}$; imaginary $\\frac{8}{3}-1=\\frac{5}{3}$.\nAnswer: $\\frac{17}{3}+i\\frac{5}{3}$"
+        },
+        {
+          "number": "Q8",
+          "quick": { "q": "$(1-i)^4 = ?$", "options": ["-4", "4", "-4i", "4i"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $(1-i)^4$",
+          "solution": "$(1-i)^2=1-2i+i^2=1-2i-1=-2i$\n$(1-i)^4=(-2i)^2=4i^2=-4$\nAnswer: $-4+i0$"
+        },
+        {
+          "number": "Q9",
+          "quick": { "q": "The real part of $\\left(\\frac{1}{3}+3i\\right)^3$ is:", "options": ["$-242/27$", "$242/27$", "$-26$", "$1/27$"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $\\left(\\frac{1}{3}+3i\\right)^3$",
+          "solution": "Using $(a+bi)^3=(a^3-3ab^2)+i(3a^2b-b^3)$ with $a=\\frac{1}{3},b=3$:\nReal: $\\frac{1}{27}-3(\\frac{1}{3})(9)=\\frac{1}{27}-9=-\\frac{242}{27}$\nImaginary: $3(\\frac{1}{9})(3)-27=1-27=-26$\nAnswer: $-\\frac{242}{27}-i26$"
+        },
+        {
+          "number": "Q10",
+          "quick": { "q": "The imaginary part of $\\left(-2-\\frac{1}{3}i\\right)^3$ is:", "options": ["$-107/27$", "$107/27$", "$-22/3$", "$22/3$"], "correct": 0 },
+          "prompt": "Express in the form $a+ib$: $\\left(-2-\\frac{1}{3}i\\right)^3$",
+          "solution": "Using $(a+bi)^3=(a^3-3ab^2)+i(3a^2b-b^3)$ with $a=-2,b=-\\frac{1}{3}$:\nReal: $-8-3(-2)(\\frac{1}{9})=-8+\\frac{2}{3}=-\\frac{22}{3}$\nImaginary: $3(4)(-\\frac{1}{3})-(-\\frac{1}{27})=-4+\\frac{1}{27}=-\\frac{107}{27}$\nAnswer: $-\\frac{22}{3}-i\\frac{107}{27}$"
+        },
+        {
+          "number": "Q11",
+          "quick": { "q": "Multiplicative inverse of $4-3i$?", "options": ["$\\frac{4}{25}+i\\frac{3}{25}$", "$\\frac{4}{25}-i\\frac{3}{25}$", "$\\frac{3}{25}+i\\frac{4}{25}$", "$-\\frac{4}{25}-i\\frac{3}{25}$"], "correct": 0 },
+          "prompt": "Find the multiplicative inverse of $4-3i$.",
+          "solution": "$\\bar z=4+3i$, $|z|^2=16+9=25$\n$z^{-1}=\\frac{\\bar z}{|z|^2}=\\frac{4+3i}{25}=\\frac{4}{25}+i\\frac{3}{25}$"
+        },
+        {
+          "number": "Q12",
+          "quick": { "q": "Multiplicative inverse of $\\sqrt5+3i$?", "options": ["$\\frac{\\sqrt5}{14}-i\\frac{3}{14}$", "$\\frac{\\sqrt5}{14}+i\\frac{3}{14}$", "$\\frac{3}{14}-i\\frac{\\sqrt5}{14}$", "$\\frac{14}{\\sqrt5}$"], "correct": 0 },
+          "prompt": "Find the multiplicative inverse of $\\sqrt5+3i$.",
+          "solution": "$\\bar z=\\sqrt5-3i$, $|z|^2=5+9=14$\n$z^{-1}=\\frac{\\sqrt5-3i}{14}=\\frac{\\sqrt5}{14}-i\\frac{3}{14}$"
+        },
+        {
+          "number": "Q13",
+          "quick": { "q": "Multiplicative inverse of $-i$?", "options": ["$i$", "$-i$", "1", "-1"], "correct": 0 },
+          "prompt": "Find the multiplicative inverse of $-i$.",
+          "solution": "$\\bar z=i$, $|z|^2=1$\n$z^{-1}=\\frac{i}{1}=i$"
+        },
+        {
+          "number": "Q14",
+          "quick": { "q": "$(3+i\\sqrt5)(3-i\\sqrt5) = ?$", "options": ["14", "4", "-14", "9-5"], "correct": 0 },
+          "prompt": "Express the following expression in the form of $a+ib$: $\\frac{(3+i\\sqrt5)(3-i\\sqrt5)}{(\\sqrt3+\\sqrt2i)-(\\sqrt3-i\\sqrt2)}$",
+          "solution": "Numerator (difference of squares): $(3+i\\sqrt5)(3-i\\sqrt5)=9-(i\\sqrt5)^2=9-(-5)=14$\nDenominator: $(\\sqrt3+i\\sqrt2)-(\\sqrt3-i\\sqrt2)=2i\\sqrt2$\nExpression $=\\frac{14}{2i\\sqrt2}=\\frac{7}{i\\sqrt2}=\\frac{7}{i\\sqrt2}\\times\\frac{-i}{-i}=\\frac{-7i}{\\sqrt2}=-i\\frac{7\\sqrt2}{2}$\nAnswer: $0-i\\frac{7\\sqrt2}{2}$ (purely imaginary)"
+        }
+      ]
+    }
+  ],
+  "miscellaneous": {
+    "title": "Miscellaneous Exercise on Chapter 4",
+    "eyebrow": "Miscellaneous Exercise · 14 Questions",
+    "bookQuestions": [
+      {
+        "number": "Q1",
+        "quick": { "q": "$i^{18} = ?$", "options": ["-1", "1", "i", "-i"], "correct": 0 },
+        "prompt": "Evaluate: $\\left[i^{18}+\\left(\\frac{1}{i}\\right)^{25}\\right]^3$",
+        "solution": "$i^{18}$: 18 mod 4 = 2, so $i^{18}=i^2=-1$.\n$\\left(\\frac{1}{i}\\right)^{25}=(-i)^{25}=(-1)^{25}i^{25}=-i^{25}$. Since $25$ mod $4=1$, $i^{25}=i$, so this is $-i$.\nSum: $-1+(-i)=-1-i$.\nCube: $(-1-i)^2=1+2i+i^2=2i$. $(-1-i)^3=(-1-i)(2i)=-2i-2i^2=2-2i$.\nAnswer: $2-2i$"
+      },
+      {
+        "number": "Q2",
+        "quick": { "q": "$\\text{Re}(z_1z_2)$ equals:", "options": ["$\\text{Re}\\,z_1\\,\\text{Re}\\,z_2-\\text{Im}\\,z_1\\,\\text{Im}\\,z_2$", "$\\text{Re}\\,z_1+\\text{Re}\\,z_2$", "$\\text{Re}\\,z_1\\,\\text{Im}\\,z_2+\\text{Im}\\,z_1\\,\\text{Re}\\,z_2$", "$\\text{Re}\\,z_1\\,\\text{Re}\\,z_2+\\text{Im}\\,z_1\\,\\text{Im}\\,z_2$"], "correct": 0 },
+        "prompt": "For any two complex numbers $z_1$ and $z_2$, prove that $\\text{Re}(z_1z_2)=\\text{Re}\\,z_1\\,\\text{Re}\\,z_2-\\text{Im}\\,z_1\\,\\text{Im}\\,z_2$.",
+        "solution": "Let $z_1=a+ib$, $z_2=c+id$. Then $z_1z_2=(ac-bd)+i(ad+bc)$.\nSo $\\text{Re}(z_1z_2)=ac-bd=\\text{Re}(z_1)\\text{Re}(z_2)-\\text{Im}(z_1)\\text{Im}(z_2)$ — directly from the definition of complex multiplication."
+      },
+      {
+        "number": "Q3",
+        "quick": { "q": "$\\frac{1}{1-4i} = ?$ (rationalized)", "options": ["$\\frac{1+4i}{17}$", "$\\frac{1-4i}{17}$", "$1+4i$", "$\\frac{1+4i}{16}$"], "correct": 0 },
+        "prompt": "Reduce $\\left(\\frac{1}{1-4i}-\\frac{2}{1+i}\\right)\\left(\\frac{3-4i}{5+i}\\right)$ to the standard form.",
+        "solution": "$\\frac{1}{1-4i}=\\frac{1+4i}{17}$ (multiply by conjugate). $\\frac{2}{1+i}=1-i$ (multiply by conjugate).\n$\\frac{1+4i}{17}-(1-i)=\\frac{1+4i-17+17i}{17}=\\frac{-16+21i}{17}$\n$\\frac{3-4i}{5+i}=\\frac{(3-4i)(5-i)}{26}=\\frac{11-23i}{26}$\nMultiply: $\\frac{(-16+21i)(11-23i)}{17\\times26}=\\frac{307+599i}{442}$\nAnswer: $\\frac{307}{442}+i\\frac{599}{442}$"
+      },
+      {
+        "number": "Q4",
+        "quick": { "q": "Taking modulus of $x-iy=\\sqrt{\\frac{a-ib}{c-id}}$ gives:", "options": ["$x^2+y^2=\\sqrt{\\frac{a^2+b^2}{c^2+d^2}}$", "$x^2+y^2=\\frac{a^2+b^2}{c^2+d^2}$", "$x-y=\\sqrt{a-b}$", "Modulus can't be used here"], "correct": 0 },
+        "prompt": "If $x-iy=\\sqrt{\\frac{a-ib}{c-id}}$, prove that $(x^2+y^2)^2=\\frac{a^2+b^2}{c^2+d^2}$.",
+        "solution": "Taking modulus of both sides: $|x-iy|=\\left|\\sqrt{\\frac{a-ib}{c-id}}\\right|$, so $x^2+y^2=\\sqrt{\\frac{a^2+b^2}{c^2+d^2}}$ (using $|z_1/z_2|=|z_1|/|z_2|$).\nSquaring both sides: $(x^2+y^2)^2=\\frac{a^2+b^2}{c^2+d^2}$"
+      },
+      {
+        "number": "Q5",
+        "quick": { "q": "$z_1=2-i$, $z_2=1+i$. $z_1+z_2+1 = ?$", "options": ["4", "4-2i", "2+2i", "0"], "correct": 0 },
+        "prompt": "If $z_1=2-i$, $z_2=1+i$, find $\\left|\\frac{z_1+z_2+1}{z_1-z_2+1}\\right|$.",
+        "solution": "$z_1+z_2+1=(2-i)+(1+i)+1=4$\n$z_1-z_2+1=(2-i)-(1+i)+1=2-2i$\n$\\left|\\frac{4}{2-2i}\\right|=\\frac{4}{\\sqrt{4+4}}=\\frac{4}{2\\sqrt2}=\\sqrt2$\nAnswer: $\\sqrt2$"
+      },
+      {
+        "number": "Q6",
+        "quick": { "q": "Taking modulus of $a+ib=\\frac{(x+i)^2}{2x^2+1}$ gives $\\sqrt{a^2+b^2}=?$", "options": ["$\\frac{x^2+1}{2x^2+1}$", "$\\frac{(x^2+1)^2}{(2x^2+1)^2}$", "$x^2+1$", "$2x^2+1$"], "correct": 0 },
+        "prompt": "If $a+ib=\\frac{(x+i)^2}{2x^2+1}$, prove that $a^2+b^2=\\frac{(x^2+1)^2}{(2x^2+1)^2}$.",
+        "solution": "Take modulus of both sides: $\\sqrt{a^2+b^2}=\\frac{|x+i|^2}{2x^2+1}=\\frac{x^2+1}{2x^2+1}$ (since $2x^2+1$ is real and positive).\nSquaring: $a^2+b^2=\\frac{(x^2+1)^2}{(2x^2+1)^2}$"
+      },
+      {
+        "number": "Q7",
+        "quick": { "q": "$z_1=2-i$, $z_2=-2+i$. $z_1z_2 = ?$", "options": ["-3+4i", "-3-4i", "3+4i", "4-3i"], "correct": 0 },
+        "prompt": "Let $z_1=2-i$, $z_2=-2+i$. Find (i) $\\text{Re}\\left(\\frac{z_1z_2}{\\bar z_1}\\right)$, (ii) $\\text{Im}\\left(\\frac{1}{z_1\\bar z_1}\\right)$.",
+        "solution": "(i) $z_1z_2=(2-i)(-2+i)=-4+2i+2i-i^2=-3+4i$. $\\bar z_1=2+i$.\n$\\frac{-3+4i}{2+i}=\\frac{(-3+4i)(2-i)}{5}=\\frac{-2+11i}{5}$. So $\\text{Re}=-\\frac{2}{5}$.\n(ii) $z_1\\bar z_1=|z_1|^2=5$ (purely real), so $\\frac{1}{5}$ has $\\text{Im}=0$.\nAnswers: (i) $-\\frac{2}{5}$ (ii) $0$"
+      },
+      {
+        "number": "Q8",
+        "quick": { "q": "$(x-iy)(3+5i)$ is the conjugate of $-6-24i$. Find x.", "options": ["3", "-3", "6", "-6"], "correct": 0 },
+        "prompt": "Find the real numbers x and y if $(x-iy)(3+5i)$ is the conjugate of $-6-24i$.",
+        "solution": "Conjugate of $-6-24i$ is $-6+24i$.\n$(x-iy)(3+5i)=(3x+5y)+i(5x-3y)$\nSo $3x+5y=-6$ and $5x-3y=24$.\nSolving: $9x+15y=-18$, $25x-15y=120$; adding gives $34x=102 \\Rightarrow x=3$.\nThen $3(3)+5y=-6 \\Rightarrow y=-3$.\nAnswer: $x=3, y=-3$"
+      },
+      {
+        "number": "Q9",
+        "quick": { "q": "$\\frac{1+i}{1-i} = ?$ (simplified)", "options": ["$i$", "$-i$", "1", "-1"], "correct": 0 },
+        "prompt": "Find the modulus of $\\frac{1+i}{1-i}-\\frac{1-i}{1+i}$.",
+        "solution": "$\\frac{1+i}{1-i}=\\frac{(1+i)^2}{2}=\\frac{2i}{2}=i$. $\\frac{1-i}{1+i}=\\frac{(1-i)^2}{2}=\\frac{-2i}{2}=-i$.\nExpression $=i-(-i)=2i$.\nModulus $=|2i|=2$"
+      },
+      {
+        "number": "Q10",
+        "quick": { "q": "$u=x^3-3xy^2$ from $(x+iy)^3=u+iv$. What is v?", "options": ["$3x^2y-y^3$", "$x^3-3xy^2$", "$3xy^2-x^3$", "$y^3-3x^2y$"], "correct": 0 },
+        "prompt": "If $(x+iy)^3=u+iv$, then show that $\\frac{u}{x}+\\frac{v}{y}=4(x^2-y^2)$.",
+        "solution": "$(x+iy)^3=(x^3-3xy^2)+i(3x^2y-y^3)$, so $u=x^3-3xy^2$, $v=3x^2y-y^3$.\n$\\frac{u}{x}=x^2-3y^2$, $\\frac{v}{y}=3x^2-y^2$.\nSum: $(x^2-3y^2)+(3x^2-y^2)=4x^2-4y^2=4(x^2-y^2)$"
+      },
+      {
+        "number": "Q11",
+        "quick": { "q": "If $|\\beta|=1$, $\\left|\\frac{\\beta-\\alpha}{1-\\bar\\alpha\\beta}\\right| = ?$", "options": ["1", "0", "$|\\alpha|$", "$|\\beta|$"], "correct": 0 },
+        "prompt": "If $\\alpha$ and $\\beta$ are different complex numbers with $|\\beta|=1$, then find $\\left|\\frac{\\beta-\\alpha}{1-\\bar\\alpha\\beta}\\right|$.",
+        "solution": "$|1-\\bar\\alpha\\beta|^2=1-\\alpha\\bar\\beta-\\bar\\alpha\\beta+|\\alpha|^2|\\beta|^2=1-\\alpha\\bar\\beta-\\bar\\alpha\\beta+|\\alpha|^2$ (using $|\\beta|^2=1$).\n$|\\beta-\\alpha|^2=|\\beta|^2-\\beta\\bar\\alpha-\\alpha\\bar\\beta+|\\alpha|^2=1-\\beta\\bar\\alpha-\\alpha\\bar\\beta+|\\alpha|^2$.\nSince $\\bar\\alpha\\beta=\\beta\\bar\\alpha$, these two expressions are identical, so $|\\beta-\\alpha|^2=|1-\\bar\\alpha\\beta|^2$.\nAnswer: $1$"
+      },
+      {
+        "number": "Q12",
+        "quick": { "q": "$|1-i| = ?$", "options": ["$\\sqrt2$", "2", "1", "0"], "correct": 0 },
+        "prompt": "Find the number of non-zero integral solutions of the equation $|1-i|^x=2^x$.",
+        "solution": "$|1-i|=\\sqrt2$, so the equation becomes $(\\sqrt2)^x=2^x$, i.e. $2^{x/2}=2^x$.\nThis requires $\\frac{x}{2}=x$, which only happens at $x=0$.\nSince the question asks for NON-ZERO solutions, and the only solution is $x=0$: there are **0 non-zero integral solutions**."
+      },
+      {
+        "number": "Q13",
+        "quick": { "q": "Taking modulus of $(a+ib)(c+id)(e+if)(g+ih)=A+iB$ uses which property?", "options": ["$|z_1z_2z_3z_4|=|z_1||z_2||z_3||z_4|$", "$|z_1+z_2|=|z_1|+|z_2|$", "$\\text{Re}(z_1z_2)=\\text{Re}\\,z_1\\,\\text{Re}\\,z_2$", "None of these"], "correct": 0 },
+        "prompt": "If $(a+ib)(c+id)(e+if)(g+ih)=A+iB$, then show that $(a^2+b^2)(c^2+d^2)(e^2+f^2)(g^2+h^2)=A^2+B^2$.",
+        "solution": "Take the modulus of both sides: $|a+ib||c+id||e+if||g+ih|=|A+iB|$ (using $|z_1z_2z_3z_4|=|z_1||z_2||z_3||z_4|$).\n$\\sqrt{a^2+b^2}\\sqrt{c^2+d^2}\\sqrt{e^2+f^2}\\sqrt{g^2+h^2}=\\sqrt{A^2+B^2}$\nSquaring both sides gives $(a^2+b^2)(c^2+d^2)(e^2+f^2)(g^2+h^2)=A^2+B^2$"
+      },
+      {
+        "number": "Q14",
+        "quick": { "q": "$\\frac{1+i}{1-i}$ simplifies to $i$. Least positive m such that $i^m=1$?", "options": ["4", "2", "1", "8"], "correct": 0 },
+        "prompt": "If $\\left(\\frac{1+i}{1-i}\\right)^m=1$, then find the least positive integral value of m.",
+        "solution": "$\\frac{1+i}{1-i}=\\frac{(1+i)^2}{2}=\\frac{2i}{2}=i$.\nEquation becomes $i^m=1$. Since $i^1=i, i^2=-1, i^3=-i, i^4=1$, the smallest positive power giving 1 is $m=4$."
+      }
+    ]
+  }
+}

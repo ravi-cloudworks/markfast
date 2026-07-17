@@ -11,6 +11,8 @@ function renderDiagram(diagram){
       return renderCartesianGrid(diagram);
     case 'function-graph':
       return renderFunctionGraph(diagram);
+    case 'coordinate-plane':
+      return renderCoordinatePlane(diagram);
     default:
       return '';
   }

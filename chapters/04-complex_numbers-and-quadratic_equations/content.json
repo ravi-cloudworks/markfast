@@ -1,0 +1,218 @@
+{
+  "courseTitle": "Complex Numbers & Quadratic Equations — Class XI Crash Course",
+  "modules": [
+    {
+      "moduleId": "M1",
+      "title": "Complex Numbers",
+      "eyebrow": "Module 1 of 4",
+      "hook": "$x^2+1=0$ has no real solution — every real number squared is $\\ge 0$, so it can never equal $-1$. Complex numbers are the number system built specifically to fix that gap.",
+      "definition": "A number of the form $a+ib$, where $a$ and $b$ are real numbers, is called a complex number. Here $a$ is the real part (written $\\text{Re}\\,z$) and $b$ is the imaginary part (written $\\text{Im}\\,z$).",
+      "notation": [
+        "$i=\\sqrt{-1}$, so $i^2=-1$",
+        "$z=a+ib$ — a complex number",
+        "$\\text{Re}(z)=a$, $\\text{Im}(z)=b$",
+        "$z_1=z_2 \\iff a=c \\text{ and } b=d$"
+      ],
+      "concepts": [
+        {
+          "heading": "Why we need i at all",
+          "body": "The equation $x^2+1=0$ has no real solution — every real number squared is $\\ge0$, so it can never equal $-1$. Defining $i=\\sqrt{-1}$ (so $i^2=-1$) extends the number system just enough to solve equations like this."
+        },
+        {
+          "heading": "Equality of complex numbers",
+          "body": "Two complex numbers $z_1=a+ib$ and $z_2=c+id$ are equal ONLY when BOTH parts match: $a=c$ AND $b=d$. One equation in complex numbers secretly hides two ordinary real equations."
+        }
+      ],
+      "video": { "placeholder": true, "path": "videos/m1_placeholder.mp4", "caption": "Coming soon: why √-1 needed its own symbol" },
+      "tricks": [
+        "Every real number is also a complex number (with $b=0$) — reals are a special case, not a separate universe.",
+        "Equality of $a+ib=c+id$ splits into two real equations: $a=c$ and $b=d$ — always solve them separately."
+      ],
+      "examples": [
+        {
+          "question": "If $4x+i(3x-y)=3+i(-6)$, find $x$ and $y$.",
+          "steps": ["Match real parts: $4x=3 \\Rightarrow x=\\frac{3}{4}$", "Match imaginary parts: $3x-y=-6$"],
+          "answer": "$x=\\frac{3}{4}$, and substituting: $3(\\frac{3}{4})-y=-6 \\Rightarrow y=\\frac{33}{4}$"
+        }
+      ],
+      "quiz": [
+        { "q": "$i^2 = ?$", "options": ["-1", "1", "i", "-i"], "correct": 0 },
+        { "q": "For $z=2+i5$, what is $\\text{Re}(z)$?", "options": ["2", "5", "7", "-5"], "correct": 0 },
+        { "q": "$4x+i(3x-y)=3-6i$. What is x?", "options": ["$3/4$", "$4/3$", "$-6$", "$3$"], "correct": 0 },
+        { "q": "Two complex numbers $a+ib=c+id$ are equal when:", "options": ["$a=c$ and $b=d$", "$a+b=c+d$", "$ab=cd$", "$a=d$ and $b=c$"], "correct": 0 },
+        { "q": "Is every real number also a complex number?", "options": ["Yes, with imaginary part 0", "No, they're different systems"], "correct": 0 },
+        { "q": "Which equation has NO real solution but IS solvable using $i$?", "options": ["$x^2+1=0$", "$x^2-1=0$", "$x-1=0$", "$x^2=4$"], "correct": 0 }
+      ]
+    },
+    {
+      "moduleId": "M2",
+      "title": "Algebra of Complex Numbers",
+      "eyebrow": "Module 2 of 4",
+      "hook": "Adding, subtracting, and multiplying complex numbers works almost exactly like ordinary algebra — with one rule that changes everything mid-calculation: whenever $i^2$ shows up, it becomes $-1$.",
+      "definition": "Complex numbers add, subtract, multiply and divide almost exactly like ordinary algebraic expressions — with one rule that changes everything: whenever $i^2$ appears, replace it with $-1$.",
+      "notation": [
+        "$z_1+z_2=(a+c)+i(b+d)$",
+        "$z_1-z_2=(a-c)+i(b-d)$",
+        "$z_1z_2=(ac-bd)+i(ad+bc)$",
+        "$i^{4k}=1, i^{4k+1}=i, i^{4k+2}=-1, i^{4k+3}=-i$"
+      ],
+      "concepts": [
+        {
+          "heading": "Addition, subtraction, multiplication",
+          "body": "$z_1+z_2=(a+c)+i(b+d)$ — add the parts separately. $z_1-z_2=(a-c)+i(b-d)$. $z_1z_2=(ac-bd)+i(ad+bc)$ — expand like any binomial product, then replace $i^2$ with $-1$."
+        },
+        {
+          "heading": "Powers of i cycle every 4",
+          "body": "$i^1=i, i^2=-1, i^3=-i, i^4=1$, then it repeats: $i^5=i, i^6=-1,\\dots$. For any integer $k$: $i^{4k}=1$, $i^{4k+1}=i$, $i^{4k+2}=-1$, $i^{4k+3}=-i$. To simplify $i^n$ for large $n$, just find the remainder when $n$ is divided by 4."
+        },
+        {
+          "heading": "Square roots of negative reals",
+          "body": "For a positive real $a$: $\\sqrt{-a}=\\sqrt{a}\\,i$. **Warning**: the rule $\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$ does NOT hold when both $a,b$ are negative — treating $\\sqrt{-1}\\times\\sqrt{-1}$ as $\\sqrt{1}=1$ gives a contradiction; it's actually $i\\times i=i^2=-1$."
+        }
+      ],
+      "video": { "placeholder": true, "path": "videos/m2_placeholder.mp4", "caption": "Coming soon: the powers-of-i cycle, visualized" },
+      "tricks": [
+        "To simplify $i^n$ for a big exponent n: divide n by 4, the REMAINDER tells you the answer ($i^0=1,i^1=i,i^2=-1,i^3=-i$).",
+        "Division of complex numbers: multiply top and bottom by the conjugate of the denominator to clear the $i$ from underneath.",
+        "$\\sqrt{-a}=\\sqrt{a}\\,i$ for positive $a$ — never write $\\sqrt{-a}=-\\sqrt{a}$, that's a completely different (wrong) thing."
+      ],
+      "examples": [
+        {
+          "question": "Express $(-5i)\\left(\\frac{1}{8}i\\right)$ in the form $a+ib$.",
+          "steps": ["$(-5i)(\\frac{1}{8}i)=\\frac{-5}{8}i^2$", "$i^2=-1$, so this is $\\frac{-5}{8}(-1)=\\frac{5}{8}$"],
+          "answer": "$\\frac{5}{8}+i0$"
+        },
+        {
+          "question": "Simplify $i^{-35}$.",
+          "steps": ["$i^{-35}=\\frac{1}{i^{35}}$", "$i^{35}=i^{32}\\cdot i^3=(i^4)^8\\cdot i^3=1\\cdot(-i)=-i$", "$\\frac{1}{-i}=\\frac{1}{-i}\\times\\frac{i}{i}=\\frac{i}{-i^2}=\\frac{i}{1}=i$"],
+          "answer": "$i^{-35}=i$"
+        }
+      ],
+      "quiz": [
+        { "q": "$z_1=2+i3$, $z_2=1-i2$. Find $z_1+z_2$.", "options": ["$3+i$", "$1+i5$", "$3+i5$", "$1-i$"], "correct": 0 },
+        { "q": "What is $i^{17}$?", "options": ["$i$", "$-1$", "$-i$", "$1$"], "correct": 0, "feedback": { "1": "17 ÷ 4 leaves remainder 1, so $i^{17}=i^{4(4)+1}=i^1=i$, not -1." } },
+        { "q": "What is $\\sqrt{-16}$?", "options": ["$4i$", "$-4$", "$4$", "$-4i$"], "correct": 0 },
+        { "q": "$(2+i3)(1-i)$ equals:", "options": ["$5+i$", "$2-i3$", "$-1+i5$", "$5-i$"], "correct": 0 },
+        { "q": "Why is $\\sqrt{-1}\\times\\sqrt{-1} \\ne \\sqrt{(-1)\\times(-1)}$?", "options": ["The rule √a·√b=√ab only holds when a,b aren't both negative", "It actually does equal that", "Square roots don't exist for negative numbers", "This is undefined"], "correct": 0 },
+        { "q": "$i^{4k+2}$ for any integer k equals:", "options": ["-1", "1", "i", "-i"], "correct": 0 }
+      ]
+    },
+    {
+      "moduleId": "M3",
+      "title": "Modulus and Conjugate",
+      "eyebrow": "Module 3 of 4",
+      "hook": "Modulus is just distance from home — the same Pythagoras formula you've used for years. Conjugate is your mirror image: same real part, imaginary part flipped.",
+      "definition": "For $z=a+ib$, the modulus $|z|$ is the non-negative real number $\\sqrt{a^2+b^2}$, and the conjugate $\\bar z$ is $a-ib$ — same real part, imaginary part flipped in sign.",
+      "notation": [
+        "$|z|=\\sqrt{a^2+b^2}$ — modulus",
+        "$\\bar z=a-ib$ — conjugate",
+        "$z\\bar z=|z|^2$",
+        "$z^{-1}=\\frac{\\bar z}{|z|^2}$"
+      ],
+      "concepts": [
+        {
+          "heading": "Modulus is just distance from the origin",
+          "body": "$|z|=\\sqrt{a^2+b^2}$ is exactly the Pythagorean distance formula — it measures how far the point $(a,b)$ is from $(0,0)$."
+        },
+        {
+          "heading": "The conjugate trick for division",
+          "body": "$z\\bar z=|z|^2$ is always a real number (no leftover $i$). This is exactly why dividing by a complex number works: multiply top and bottom by the conjugate of the denominator, and the denominator becomes a plain real number."
+        }
+      ],
+      "video": { "placeholder": true, "path": "videos/m3_placeholder.mp4", "caption": "Coming soon: why the conjugate trick clears the i" },
+      "tricks": [
+        "$z\\bar z=|z|^2$ — multiplying by the conjugate always eliminates $i$ from the denominator.",
+        "$|z_1z_2|=|z_1||z_2|$ and $\\left|\\frac{z_1}{z_2}\\right|=\\frac{|z_1|}{|z_2|}$ — modulus behaves like ordinary absolute value under multiplication and division.",
+        "$\\overline{z_1z_2}=\\bar z_1\\bar z_2$ and $\\overline{z_1\\pm z_2}=\\bar z_1\\pm\\bar z_2$ — conjugate distributes over both operations."
+      ],
+      "examples": [
+        {
+          "question": "Find the multiplicative inverse of $2-3i$.",
+          "steps": ["$\\bar z=2+3i$", "$|z|^2=2^2+(-3)^2=13$", "$z^{-1}=\\frac{\\bar z}{|z|^2}=\\frac{2+3i}{13}$"],
+          "answer": "$z^{-1}=\\frac{2}{13}+\\frac{3}{13}i$"
+        },
+        {
+          "question": "Find the conjugate of $\\frac{(3-2i)(2+3i)}{(1+2i)(2-i)}$.",
+          "steps": ["Numerator: $(3-2i)(2+3i)=6+9i-4i-6i^2=6+5i+6=12+5i$", "Denominator: $(1+2i)(2-i)=2-i+4i-2i^2=2+3i+2=4+3i$", "So the expression is $\\frac{12+5i}{4+3i}$; multiply by $\\frac{4-3i}{4-3i}$: $\\frac{(12+5i)(4-3i)}{16+9}=\\frac{48-36i+20i+15}{25}=\\frac{63-16i}{25}$"],
+          "answer": "The conjugate is $\\frac{63}{25}+\\frac{16}{25}i$"
+        }
+      ],
+      "quiz": [
+        { "q": "$|3+i|=?$", "options": ["$\\sqrt{10}$", "4", "$\\sqrt{8}$", "10"], "correct": 0 },
+        { "q": "Conjugate of $2-5i$?", "options": ["$2+5i$", "$-2-5i$", "$-2+5i$", "$5-2i$"], "correct": 0 },
+        { "q": "$z\\bar z$ always equals:", "options": ["$|z|^2$, a real number", "0", "$z^2$", "$2\\,\\text{Re}(z)$"], "correct": 0 },
+        { "q": "Multiplicative inverse of $z=a+ib$ is:", "options": ["$\\frac{\\bar z}{|z|^2}$", "$\\bar z$", "$|z|^2$", "$-z$"], "correct": 0 },
+        { "q": "$|z_1z_2|$ equals:", "options": ["$|z_1||z_2|$", "$|z_1|+|z_2|$", "$|z_1|-|z_2|$", "$|z_1|/|z_2|$"], "correct": 0 },
+        { "q": "Why multiply by the conjugate when dividing complex numbers?", "options": ["It turns the denominator into a real number ($z\\bar z=|z|^2$)", "It cancels the real part", "It's just a shortcut with no real reason", "It changes the answer's sign"], "correct": 0 }
+      ]
+    },
+    {
+      "moduleId": "M4",
+      "title": "Argand Plane",
+      "eyebrow": "Module 4 of 4",
+      "hook": "A complex number is basically a map pin — the real part is your east-west position, the imaginary part is north-south. Plot it exactly like any other coordinate.",
+      "definition": "Every complex number $x+iy$ corresponds to a unique point $P(x,y)$ in a plane — called the Argand plane (or complex plane). The x-axis is the real axis, the y-axis is the imaginary axis.",
+      "notation": [
+        "Real axis = x-axis, Imaginary axis = y-axis",
+        "$z=x+iy \\leftrightarrow P(x,y)$",
+        "$|z|$ = distance from origin to P",
+        "$\\bar z \\leftrightarrow$ mirror image of P across the real axis"
+      ],
+      "concepts": [
+        {
+          "heading": "Plotting complex numbers as points",
+          "body": "$2+4i$, $-2+3i$, $0+1i$, $2+0i$, $-5-2i$ and $1-2i$ correspond to the ordered pairs $(2,4),(-2,3),(0,1),(2,0),(-5,-2),(1,-2)$ — plot them exactly like coordinates.",
+          "diagram": { "type": "coordinate-plane", "points": [{"x":2,"y":4,"label":"A(2,4)"},{"x":-2,"y":3,"label":"B(-2,3)"},{"x":0,"y":1,"label":"C(0,1)"},{"x":2,"y":0,"label":"D(2,0)"},{"x":-5,"y":-2,"label":"E(-5,-2)"},{"x":1,"y":-2,"label":"F(1,-2)"}], "xMin": -6, "xMax": 6, "yMin": -4, "yMax": 6, "caption": "Six complex numbers plotted on the Argand plane" }
+        },
+        {
+          "heading": "Modulus is literally distance on the plane",
+          "body": "$|z|=\\sqrt{x^2+y^2}$ is exactly the straight-line distance from the origin $O(0,0)$ to the point $P(x,y)$ — the Pythagorean distance formula, nothing new.",
+          "diagram": { "type": "coordinate-plane", "points": [{"x":4,"y":3,"label":"P(x,y)"}], "originLines": [0], "xMin": -2, "xMax": 6, "yMin": -2, "yMax": 5, "caption": "|z| = distance from O to P" }
+        },
+        {
+          "heading": "Conjugate is the mirror image",
+          "body": "The conjugate $\\bar z=x-iy$ corresponds to the point $Q(x,-y)$ — the reflection of $P(x,y)$ across the real axis, like looking in a mirror laid along the x-axis.",
+          "diagram": { "type": "coordinate-plane", "points": [{"x":4,"y":3,"label":"P(x,y)"},{"x":4,"y":-3,"label":"Q(x,-y)"}], "connections": [[0,1]], "xMin": -2, "xMax": 7, "yMin": -5, "yMax": 5, "caption": "z and its conjugate — mirrored across the real axis" }
+        }
+      ],
+      "video": { "placeholder": true, "path": "videos/m4_placeholder.mp4", "caption": "Coming soon: plotting complex numbers live" },
+      "tricks": [
+        "Points on the x-axis are complex numbers of the form $a+i0$ (purely real); points on the y-axis are $0+ib$ (purely imaginary).",
+        "Conjugation never moves a point left/right — only flips it above/below the real axis.",
+        "Modulus is ALWAYS non-negative — it's a distance, and distances can't be negative."
+      ],
+      "examples": [
+        {
+          "question": "Plot $z=1-2i$ on the Argand plane and find $|z|$.",
+          "steps": ["$z=1-2i$ corresponds to the point $(1,-2)$", "$|z|=\\sqrt{1^2+(-2)^2}=\\sqrt{5}$"],
+          "answer": "The point is $(1,-2)$, and $|z|=\\sqrt{5}$",
+          "diagram": { "type": "coordinate-plane", "points": [{"x":1,"y":-2,"label":"(1,-2)"}], "originLines": [0], "xMin": -2, "xMax": 4, "yMin": -4, "yMax": 2, "caption": "z = 1 - 2i, |z| = √5" }
+        }
+      ],
+      "quiz": [
+        { "q": "Which axis represents the imaginary part of a complex number?", "options": ["y-axis", "x-axis", "Both", "Neither"], "correct": 0 },
+        { "q": "$z=-5-2i$ corresponds to which point?", "options": ["(-5,-2)", "(5,2)", "(-2,-5)", "(2,5)"], "correct": 0 },
+        { "q": "The conjugate of a point P(x,y) on the Argand plane is:", "options": ["(x,-y) — mirror across the real axis", "(-x,y) — mirror across the imaginary axis", "(-x,-y)", "(y,x)"], "correct": 0 },
+        { "q": "$|z|$ for z corresponding to point (3,4) is:", "options": ["5", "7", "12", "1"], "correct": 0 },
+        { "q": "A point on the y-axis represents a complex number of the form:", "options": ["$0+ib$ — purely imaginary", "$a+i0$ — purely real", "$a+ib$, both nonzero", "None of these"], "correct": 0 },
+        { "q": "Can the modulus of a complex number ever be negative?", "options": ["No — it's a distance, always ≥0", "Yes, if the imaginary part is negative", "Yes, if both parts are negative", "Only for purely imaginary numbers"], "correct": 0 }
+      ]
+    }
+  ],
+  "mixedTest": {
+    "title": "Mixed Test — All Concepts",
+    "eyebrow": "Final Check",
+    "questions": [
+      { "q": "$i^2=?$", "options": ["-1", "1", "i", "-i"], "correct": 0 },
+      { "q": "$z=3+i4$, find Re(z)+Im(z).", "options": ["7", "3", "4", "12"], "correct": 0 },
+      { "q": "$i^{20}=?$", "options": ["1", "-1", "i", "-i"], "correct": 0 },
+      { "q": "$\\sqrt{-9}=?$", "options": ["3i", "-3", "9i", "-9i"], "correct": 0 },
+      { "q": "$|4+3i|=?$", "options": ["5", "7", "12", "1"], "correct": 0 },
+      { "q": "Conjugate of $-3+5i$?", "options": ["-3-5i", "3-5i", "3+5i", "5-3i"], "correct": 0 },
+      { "q": "$z\\bar z$ equals:", "options": ["$|z|^2$", "0", "$2\\text{Re}(z)$", "$z^2$"], "correct": 0 },
+      { "q": "Multiplicative inverse of z is:", "options": ["$\\bar z/|z|^2$", "$\\bar z$", "$-z$", "$1/z^2$"], "correct": 0 },
+      { "q": "A point on the Argand plane's x-axis represents:", "options": ["A purely real number", "A purely imaginary number", "Any complex number", "The origin only"], "correct": 0 },
+      { "q": "$(1+i)(1-i)=?$", "options": ["2", "0", "2i", "1"], "correct": 0 }
+    ]
+  }
+}
