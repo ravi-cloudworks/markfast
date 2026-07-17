@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relations & Functions — Quick Revision</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#10142A; --panel:#181D3B; --panel-2:#20264A;
+    --text:#EEEFF7; --muted:#9FA3C4; --gold:#E8B84B; --teal:#5FD4C4; --rose:#E86A82;
+    --line: rgba(255,255,255,0.08); --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background: var(--ink); color: var(--text); font-family:'Inter', sans-serif; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 4vh 1.5rem 6vh; }
+
+  .top-nav { display:flex; align-items:center; gap:0.7em; margin-bottom: 1.6rem; }
+  .top-nav img { height: 26px; }
+  .top-nav a.switch-link, .top-nav span.switch-link {
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; color: var(--muted);
+    background: var(--panel-2); border:1px solid var(--line); border-radius:6px;
+    padding:0.3em 0.6em; text-decoration:none;
+  }
+  .top-nav a.switch-link:hover { color: var(--teal); border-color: var(--teal); }
+  .top-nav .switch-link.active { color: var(--ink); background: var(--teal); border-color: var(--teal); font-weight:600; }
+
+  .eyebrow {
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.12em;
+    text-transform:uppercase; color: var(--gold); display:block; margin-bottom:0.5rem;
+  }
+  h1 { font-family:'Fraunces', serif; font-weight:600; font-size: clamp(1.6rem,4vw,2.3rem); margin:0 0 0.4rem; }
+  .sub { color: var(--muted); font-size:0.95rem; max-width:60ch; margin-bottom: 1.8rem; }
+
+  .top-trap {
+    background: linear-gradient(135deg, rgba(232,184,75,0.14), rgba(232,184,75,0.03));
+    border:1px solid rgba(232,184,75,0.4); border-radius: var(--radius);
+    padding: 1.1rem 1.3rem; margin-bottom: 2rem;
+  }
+  .top-trap .k { font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color: var(--gold); }
+  .top-trap p { margin: 0.4em 0 0; font-size: 0.95rem; line-height:1.5; }
+
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card {
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+  }
+  .card .mod-k { font-family:'JetBrains Mono', monospace; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color: var(--teal); }
+  .card h2 { font-family:'Fraunces', serif; font-weight:600; font-size: 1.15rem; margin: 0.3em 0 0.6em; }
+
+  .tags { margin-bottom: 0.7em; }
+  .tag {
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; color: var(--teal);
+    background: var(--panel-2); border-radius:6px; padding:0.2em 0.5em;
+    display:inline-block; margin: 0.15em 0.25em 0.15em 0;
+  }
+
+  .formula {
+    font-size: 0.85rem; color: var(--text); background: rgba(95,212,196,0.08);
+    border-left: 3px solid var(--teal); border-radius:6px; padding: 0.5em 0.7em; margin-bottom: 0.7em;
+  }
+
+  .traps { margin: 0; padding: 0; list-style: none; }
+  .traps li {
+    font-size: 0.82rem; color: var(--muted); line-height:1.45;
+    padding-left: 1.3em; position: relative; margin-bottom: 0.5em;
+  }
+  .traps li::before { content: "⚡"; position:absolute; left:0; top:0; font-size:0.85em; }
+  .traps li strong { color: var(--rose); }
+
+  footer { margin-top: 1rem; text-align:center; }
+  footer a { color: var(--teal); font-family:'JetBrains Mono', monospace; font-size:0.75rem; text-decoration:none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-nav">
+    <a href="../../class-11-math.html"><img src="../../assets/logo.png" alt="Mark Fast — back to chapters"></a>
+    <a class="switch-link" href="content.html">📘 Chapter</a>
+    <a class="switch-link" href="questions.html">✍️ Book Questions</a>
+    <span class="switch-link active">🗂️ Quick Revision</span>
+  </div>
+
+  <span class="eyebrow">Class XI · Chapter 2 · 5-Minute Recap</span>
+  <h1>Relations &amp; Functions — Formula &amp; Trap Sheet</h1>
+  <p class="sub">Every notation, formula, and trap across all 5 modules, on one page. Scan this the night before — if something here doesn't click, go back to that module's mastery check.</p>
+
+  <div class="top-trap">
+    <span class="k">⚠️ The #1 trap in this chapter</span>
+    <p>The greatest integer function $[x]$ ALWAYS rounds <strong>down</strong>, even for negatives: $[-2.3] = -3$, not $-2$. Students almost always round toward zero out of habit — that instinct is wrong here.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="mod-k">Module 1</span>
+      <h2>Cartesian Products of Sets</h2>
+      <div class="tags">
+        <span class="tag">$A \times B$</span>
+        <span class="tag">$(a,b)$</span>
+        <span class="tag">$n(A\times B)=n(A)n(B)$</span>
+        <span class="tag">$A\times A\times A$</span>
+      </div>
+      <div class="formula">If $n(A)=p$, $n(B)=q$, then $n(A\times B) = pq$ — multiply the counts</div>
+      <ul class="traps">
+        <li>$A\times B \ne B\times A$ in general — order matters, just like inside the ordered pair.</li>
+        <li>If either A or B is $\varnothing$, then $A\times B=\varnothing$ too — nothing to pair with nothing.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 2</span>
+      <h2>Relations</h2>
+      <div class="tags">
+        <span class="tag">$R \subset A\times B$</span>
+        <span class="tag">Domain</span>
+        <span class="tag">Range</span>
+        <span class="tag">Codomain</span>
+      </div>
+      <div class="formula">Total relations from A to B $= 2^{pq}$ where $n(A)=p, n(B)=q$</div>
+      <ul class="traps">
+        <li>Range $\subseteq$ Codomain <strong>always</strong> — only equal when every element of B is somebody's image.</li>
+        <li>An element of A with NO arrow is simply not in the domain — allowed for relations, but <strong>not</strong> allowed for functions (next module).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 3</span>
+      <h2>Functions</h2>
+      <div class="tags">
+        <span class="tag">$f:A\to B$</span>
+        <span class="tag">$f(a)=b$</span>
+        <span class="tag">image</span>
+        <span class="tag">preimage</span>
+      </div>
+      <div class="formula">Function $\iff$ every element of A has EXACTLY one image — not zero, not two or more</div>
+      <ul class="traps">
+        <li>Repeated <strong>outputs</strong> are fine — only repeated <strong>inputs</strong> with different outputs break a function.</li>
+        <li>$f(a)=b$: $a$ is the preimage, $b$ is the image — don't flip the direction.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 4</span>
+      <h2>Seven Functions Worth Memorizing</h2>
+      <div class="tags">
+        <span class="tag">identity</span>
+        <span class="tag">constant</span>
+        <span class="tag">modulus</span>
+        <span class="tag">signum</span>
+        <span class="tag">greatest integer</span>
+      </div>
+      <div class="formula">Signum range $=\{-1,0,1\}$ &nbsp;·&nbsp; Modulus range $=[0,\infty)$ &nbsp;·&nbsp; Greatest integer range $=\mathbb{Z}$</div>
+      <ul class="traps">
+        <li>$[x]$ ALWAYS rounds down, even for negatives — $[-2.3]=-3$, the #1 trap in this topic.</li>
+        <li>Domain of $\frac{1}{x}$-style rational functions: exclude wherever the denominator is zero, state it as $\mathbb{R}-\{\text{those points}\}$.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="mod-k">Module 5</span>
+      <h2>Algebra of Real Functions</h2>
+      <div class="tags">
+        <span class="tag">$(f+g)(x)$</span>
+        <span class="tag">$(f-g)(x)$</span>
+        <span class="tag">$(\alpha f)(x)$</span>
+        <span class="tag">$(fg)(x)$</span>
+        <span class="tag">$(f/g)(x)$</span>
+      </div>
+      <div class="formula">All five operations are done POINTWISE — compute $f(x)$ and $g(x)$ separately, then combine</div>
+      <ul class="traps">
+        <li>Scalar multiple $\alpha f$ (one function times a number) and product $fg$ (two functions multiplied) look similar but are <strong>completely different</strong> operations.</li>
+        <li>$f/g$ always needs a domain restriction: wherever $g(x)=0$ gets excluded, even if the original domain didn't.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="content.html">← Back to the full chapter deck</a>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });
+</script>
+</body>
+</html>
