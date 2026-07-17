@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sets — Book Questions & Exam Practice</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css" id="theme-base">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#10142A;
+    --panel:#181D3B;
+    --panel-2:#20264A;
+    --text:#EEEFF7;
+    --muted:#9FA3C4;
+    --gold:#E8B84B;
+    --teal:#5FD4C4;
+    --rose:#E86A82;
+    --line: rgba(255,255,255,0.08);
+    --radius: 14px;
+  }
+  html, body { background: var(--ink) !important; }
+  .reveal { font-family: 'Inter', sans-serif; color: var(--text); }
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2, .reveal h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .reveal h1 { font-size: 1.9em; }
+  .reveal h2 { font-size: 1.4em; margin-bottom: 0.25em; }
+  .reveal h3 { font-size: 1.05em; color: var(--teal); }
+  .reveal p, .reveal li { font-size: 0.68em; line-height: 1.35; color: var(--text); }
+  .reveal ul { margin-left: 0.4em; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.42em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4em;
+    display: block;
+  }
+  .hook {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.72em;
+    color: var(--muted);
+    border-left: 3px solid var(--teal);
+    padding-left: 0.5em;
+    margin: 0.4em 0;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.6em 0.8em;
+    margin: 0.35em 0;
+  }
+
+  .notation-tag {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--panel-2);
+    border-radius: 8px;
+    padding: 0.2em 0.45em;
+    display: inline-block;
+    margin: 0.15em 0.2em 0.15em 0;
+    font-size: 0.58em;
+    color: var(--teal);
+  }
+
+  /* Venn progress signature */
+  #venn-progress {
+    position: fixed;
+    top: 16px; right: 20px;
+    z-index: 50;
+    opacity: 0.85;
+  }
+  .chapter-nav {
+    position: fixed;
+    bottom: 14px; left: 20px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    flex-wrap: wrap;
+    max-width: 60vw;
+  }
+  .chapter-nav img { height: 22px; width: auto; display: block; opacity: 0.92; }
+  .chapter-nav .switch-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.3em 0.6em;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  a.switch-link:hover { color: var(--teal); border-color: var(--teal); }
+  .chapter-nav .switch-link.active {
+    color: var(--ink);
+    background: var(--teal);
+    border-color: var(--teal);
+    font-weight: 600;
+    cursor: default;
+  }
+
+  /* Quiz (quick self-check) */
+  .quiz-box { max-width: 850px; }
+  .quiz-q { font-size: 0.8em; margin-bottom: 0.5em; }
+  .quiz-opt {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 0.4em 0.65em;
+    margin: 0.25em 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6em;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .quiz-opt:hover { border-color: var(--teal); }
+  .quiz-opt.correct { background: rgba(95,212,196,0.18); border-color: var(--teal); }
+  .quiz-opt.wrong { background: rgba(232,106,130,0.18); border-color: var(--rose); }
+  .quiz-opt:disabled { cursor: default; }
+  .quiz-feedback {
+    margin-top: 0.4em;
+    padding: 0.4em 0.65em;
+    border-radius: 8px;
+    font-size: 0.6em;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.ok { background: rgba(95,212,196,0.12); border-left: 3px solid var(--teal); }
+  .quiz-feedback.bad { background: rgba(232,106,130,0.12); border-left: 3px solid var(--rose); }
+
+  .score-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58em;
+    color: var(--gold);
+    margin-top: 0.6em;
+    display: block;
+  }
+
+  /* Book question / exercise slide */
+  .qnum-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55em;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 0.15em 0.55em;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 0.5em;
+  }
+  .reveal-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58em;
+    color: var(--ink);
+    background: var(--teal);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    margin-top: 0.5em;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .reveal-btn:hover { opacity: 0.85; }
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 900;
+    display: none;
+  }
+  .modal-backdrop.active { display: block; }
+  .solution-box {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 901;
+    width: 90vw;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1.2em 1.4em;
+    background: var(--panel);
+    border: 1px solid var(--teal);
+    border-radius: var(--radius);
+    font-size: 0.7em;
+    line-height: 1.5;
+    color: var(--text);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .solution-box.active { display: block; }
+  .solution-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1em;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 0 0.3em 0.6em;
+  }
+  .solution-close:hover { color: var(--rose); }
+</style>
+</head>
+<body>
+
+<div class="chapter-nav">
+  <a href="../../class-11-math.html"><img src="../../assets/logo.png" alt="Mark Fast — back to chapters"></a>
+  <a class="switch-link" href="content.html">📘 Chapter</a>
+  <span class="switch-link active">✍️ Book Questions</span>
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop" onclick="closeSolutionModal()"></div>
+
+<svg id="venn-progress" width="70" height="40" viewBox="0 0 70 40">
+  <circle id="venn-a" cx="27" cy="20" r="17" fill="none" stroke="#5FD4C4" stroke-width="2"/>
+  <circle id="venn-b" cx="43" cy="20" r="17" fill="none" stroke="#E8B84B" stroke-width="2"/>
+</svg>
+
+<div class="reveal">
+  <div class="slides" id="slides"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/math/math.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+
+<script>
+const STORAGE_KEY = 'sets_questions_progress_v1';
+
+function loadProgress(){
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e){ return {}; }
+}
+function saveProgress(p){
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch(e){}
+}
+let progress = loadProgress();
+
+function renderMarkdownish(text){
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--gold)">$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+function quizSlideHTML(question, qIndex, uniqueId){
+  const opts = question.options.map((opt, i) => `
+    <button class="quiz-opt" data-idx="${i}" onclick="handleQuizAnswer('${uniqueId}', ${i}, ${question.correct})">
+      ${String.fromCharCode(65+i)}.  ${opt}
+    </button>`).join('');
+  return `
+    <section data-quiz-id="${uniqueId}">
+      <span class="eyebrow">Quick Check</span>
+      <div class="quiz-box">
+        <div class="quiz-q">${renderMarkdownish(question.q)}</div>
+        ${opts}
+        <div class="quiz-feedback" id="fb-${uniqueId}"></div>
+      </div>
+    </section>`;
+}
+
+// stash feedback data globally keyed by uniqueId
+window.QUIZ_DATA = {};
+
+function handleQuizAnswer(uniqueId, chosenIdx, correctIdx){
+  const data = window.QUIZ_DATA[uniqueId];
+  const section = document.querySelector(`section[data-quiz-id="${uniqueId}"]`);
+  const buttons = section.querySelectorAll('.quiz-opt');
+  buttons.forEach(b => b.disabled = true);
+  const fb = section.querySelector('.quiz-feedback');
+
+  buttons[correctIdx].classList.add('correct');
+
+  if(chosenIdx === correctIdx){
+    fb.classList.add('show','ok');
+    fb.innerHTML = "✅ Correct. " + (data.feedback && data.feedback[String(chosenIdx)] ? renderMarkdownish(data.feedback[String(chosenIdx)]) : "Well done.");
+    progress[uniqueId] = 1;
+  } else {
+    buttons[chosenIdx].classList.add('wrong');
+    fb.classList.add('show','bad');
+    const specific = data.feedback && data.feedback[String(chosenIdx)];
+    fb.innerHTML = "❌ Not quite. " + (specific ? renderMarkdownish(specific) : "See the full worked solution on the next slide.");
+    progress[uniqueId] = 0;
+  }
+  saveProgress(progress);
+  if(window.renderMathInElement){
+    renderMathInElement(fb, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+  }
+  updateVennProgress();
+}
+
+let openSolutionUid = null;
+
+function toggleSolution(uid){
+  if(openSolutionUid === uid){
+    closeSolutionModal();
+    return;
+  }
+  if(openSolutionUid) closeSolutionModal();
+
+  const box = document.getElementById('sol-' + uid);
+  const backdrop = document.getElementById('modal-backdrop');
+  box.classList.add('active');
+  backdrop.classList.add('active');
+  openSolutionUid = uid;
+
+  if(window.renderMathInElement){
+    renderMathInElement(box, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+  }
+}
+
+function closeSolutionModal(){
+  if(!openSolutionUid) return;
+  document.getElementById('sol-' + openSolutionUid).classList.remove('active');
+  document.getElementById('modal-backdrop').classList.remove('active');
+  openSolutionUid = null;
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape' && openSolutionUid){
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    closeSolutionModal();
+  }
+}, true);
+
+// Each book question -> [quick MCQ slide, exercise+reveal-solution slide]
+function bookQuestionSlidesHTML(bq, moduleId, qIdx){
+  let html = '';
+  const uid = `${moduleId}_bq${qIdx}`;
+
+  if(bq.quick){
+    window.QUIZ_DATA[uid] = bq.quick;
+    html += quizSlideHTML(bq.quick, qIdx, uid);
+  }
+
+  html += `
+    <section>
+      <span class="eyebrow">${bq.eyebrow || ''}</span>
+      <span class="qnum-badge">${bq.number}</span>
+      <div class="card">
+        <p>${renderMarkdownish(bq.prompt)}</p>
+      </div>
+      <button class="reveal-btn" onclick="toggleSolution('${uid}')">Show Full Solution</button>
+      <div class="solution-box" id="sol-${uid}">
+        <button class="solution-close" onclick="closeSolutionModal()">✕</button>
+        ${renderMarkdownish(bq.solution)}
+      </div>
+    </section>`;
+
+  return html;
+}
+
+function moduleSlidesHTML(mod){
+  let html = `
+    <section>
+      <span class="eyebrow">${mod.eyebrow}</span>
+      <h2>${mod.title}</h2>
+      <p style="color:var(--muted)">Try the quick check first, then attempt the real exercise question on paper before revealing the solution — that's how it'll actually appear on your exam.</p>
+    </section>`;
+
+  (mod.bookQuestions || []).forEach((bq, i) => {
+    bq.eyebrow = mod.eyebrow;
+    html += bookQuestionSlidesHTML(bq, mod.moduleId, i);
+  });
+
+  return html;
+}
+
+async function buildDeck(){
+  const res = await fetch('questions.json');
+  const data = await res.json();
+
+  let out = '';
+
+  out += `
+    <section data-background-color="#10142A">
+      <span class="eyebrow">Class XI · Chapter 1</span>
+      <h1>${data.courseTitle}</h1>
+      <p class="hook" style="margin-top:1.2em;">Every question here is straight from the NCERT exercises — this is the exact pattern your board exam draws from.</p>
+    </section>`;
+
+  data.modules.forEach(mod => {
+    out += `<section>${moduleSlidesHTML(mod)}</section>`;
+  });
+
+  const misc = data.miscellaneous;
+  if(misc){
+    let miscHtml = `
+      <section>
+        <span class="eyebrow">${misc.eyebrow}</span>
+        <h2>${misc.title}</h2>
+        <p style="color:var(--muted)">The hardest questions in the chapter — mostly "show that" / "prove" style. These separate a 5-mark answer from a 1-mark guess.</p>
+      </section>`;
+    (misc.bookQuestions || []).forEach((bq, i) => {
+      bq.eyebrow = misc.eyebrow;
+      miscHtml += bookQuestionSlidesHTML(bq, 'MISC', i);
+    });
+    out += `<section>${miscHtml}</section>`;
+  }
+
+  out += `
+    <section data-background-color="#10142A">
+      <h2>🎓 Done!</h2>
+      <p>You've now worked every book-back question in this chapter. Revisit any "Show Full Solution" you needed early — that's your revision list.</p>
+      <p class="score-badge">Good luck for the exam.</p>
+    </section>`;
+
+  document.getElementById('slides').innerHTML = out;
+
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    center: false,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    width: 1100,
+    height: 720,
+    margin: 0.05,
+    katex: {
+      version: '0.16.9',
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      ignoredTags: ['script','noscript','style','textarea','pre']
+    },
+    plugins: [ RevealMath.KaTeX, RevealNotes ]
+  }).then(() => {
+    updateVennProgress();
+  });
+}
+
+function updateVennProgress(){
+  const total = Object.keys(window.QUIZ_DATA).length;
+  const correct = Object.keys(progress).filter(k => window.QUIZ_DATA[k] && progress[k] === 1).length;
+  const ratio = total ? correct/total : 0;
+  const b = document.getElementById('venn-b');
+  b.style.strokeDasharray = `${Math.round(ratio*107)} 107`;
+}
+
+buildDeck();
+</script>
+</body>
+</html>
