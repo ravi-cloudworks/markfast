@@ -161,7 +161,7 @@
       "concepts": [
         {
           "heading": "Plotting complex numbers as points",
-          "body": "$2+4i$, $-2+3i$, $0+1i$, $2+0i$, $-5-2i$ and $1-2i$ correspond to the ordered pairs $(2,4),(-2,3),(0,1),(2,0),(-5,-2),(1,-2)$ — plot them exactly like coordinates.",
+          "body": "$2+4i$, $-2+3i$, $0+1i$, $2+0i$, $-5-2i$ and $1-2i$ correspond to the ordered pairs $(2,4)$, $(-2,3)$, $(0,1)$, $(2,0)$, $(-5,-2)$, $(1,-2)$ — plot them exactly like coordinates.",
           "diagram": { "type": "coordinate-plane", "points": [{"x":2,"y":4,"label":"A(2,4)"},{"x":-2,"y":3,"label":"B(-2,3)"},{"x":0,"y":1,"label":"C(0,1)"},{"x":2,"y":0,"label":"D(2,0)"},{"x":-5,"y":-2,"label":"E(-5,-2)"},{"x":1,"y":-2,"label":"F(1,-2)"}], "xMin": -6, "xMax": 6, "yMin": -4, "yMax": 6, "caption": "Six complex numbers plotted on the Argand plane" }
         },
         {
