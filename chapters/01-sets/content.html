@@ -373,18 +373,29 @@ function moduleSlidesHTML(mod){
       <p style="margin-top:0.5em;color:var(--muted);font-size:0.55em;">Drop your generated clip at this path (or swap for an R2 URL) — the slide will pick it up automatically once wired to a &lt;video&gt; tag.</p>
     </section>`;
 
-  // Example slides
+  // Example slides — one slide per step (question, each step, answer) so
+  // no single slide ever has to fit a whole multi-step worked example.
   (mod.examples || []).forEach(ex => {
-    const heading = `<span class="eyebrow">${mod.eyebrow} · Worked Example</span>`;
-    const cardBlock = `
-        <div class="card">
-          <div class="example-q">${renderMarkdownish(ex.question)}</div>
-          ${ex.steps.map(s => `<div class="example-step">→ ${renderMarkdownish(s)}</div>`).join('')}
-          <div class="example-answer">${renderMarkdownish(ex.answer)}</div>
-        </div>`;
+    const eyebrowBase = `${mod.eyebrow} · Worked Example`;
+
+    const questionBlock = `<div class="card"><div class="example-q">${renderMarkdownish(ex.question)}</div></div>`;
     html += ex.diagram
-      ? `<section>${heading}<div class="slide-split"><div class="slide-text">${cardBlock}</div><div class="slide-diagram">${renderDiagram(ex.diagram)}</div></div></section>`
-      : `<section>${heading}${cardBlock}</section>`;
+      ? `<section><span class="eyebrow">${eyebrowBase}</span><div class="slide-split"><div class="slide-text">${questionBlock}</div><div class="slide-diagram">${renderDiagram(ex.diagram)}</div></div></section>`
+      : `<section><span class="eyebrow">${eyebrowBase}</span>${questionBlock}</section>`;
+
+    (ex.steps || []).forEach((s, i) => {
+      html += `
+        <section>
+          <span class="eyebrow">${eyebrowBase} · Step ${i + 1} of ${ex.steps.length}</span>
+          <div class="card"><div class="example-step">→ ${renderMarkdownish(s)}</div></div>
+        </section>`;
+    });
+
+    html += `
+      <section>
+        <span class="eyebrow">${eyebrowBase} · Answer</span>
+        <div class="example-answer">${renderMarkdownish(ex.answer)}</div>
+      </section>`;
   });
 
   // Quiz intro + quiz question slides (vertical stack)
