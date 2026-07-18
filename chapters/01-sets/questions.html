@@ -307,7 +307,14 @@ function saveProgress(p){
 let progress = loadProgress();
 
 function renderMarkdownish(text){
+  // Escape raw < and > FIRST — without this, LaTeX like "1<x" gets read by
+  // the browser as the start of an HTML tag before KaTeX ever sees it,
+  // silently corrupting the rest of the string. Escaping to entities keeps
+  // the literal character in the DOM text node (which is all KaTeX reads),
+  // while stopping the HTML parser from tag-sniffing it.
   return text
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
     .replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--gold)">$1</strong>')
     .replace(/\n/g, '<br>');
 }
