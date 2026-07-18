@@ -275,6 +275,11 @@
 
 <div class="modal-backdrop" id="modal-backdrop" onclick="closeSolutionModal()"></div>
 
+<div class="solution-box" id="solution-box">
+  <button class="solution-close" onclick="closeSolutionModal()">✕</button>
+  <div id="solution-box-content"></div>
+</div>
+
 <svg id="venn-progress" width="70" height="40" viewBox="0 0 70 40">
   <circle id="venn-a" cx="27" cy="20" r="17" fill="none" stroke="#5FD4C4" stroke-width="2"/>
   <circle id="venn-b" cx="43" cy="20" r="17" fill="none" stroke="#E8B84B" stroke-width="2"/>
@@ -324,6 +329,7 @@ function quizSlideHTML(question, qIndex, uniqueId){
 
 // stash feedback data globally keyed by uniqueId
 window.QUIZ_DATA = {};
+window.SOLUTION_DATA = {};
 
 function handleQuizAnswer(uniqueId, chosenIdx, correctIdx){
   const data = window.QUIZ_DATA[uniqueId];
@@ -354,27 +360,48 @@ function handleQuizAnswer(uniqueId, chosenIdx, correctIdx){
 
 let openSolutionUid = null;
 
+// The solution box lives once, as a sibling of <body> (see the HTML above) —
+// never regenerate it per-question inside #slides. reveal.js applies a CSS
+// transform to .reveal .slides for its responsive scaling, and any
+// position:fixed descendant of a transformed ancestor loses its true-viewport
+// positioning (and gets clipped by that ancestor's overflow instead of its
+// own overflow-y:auto). A single shared, body-level box sidesteps that.
 function toggleSolution(uid){
   if(openSolutionUid === uid){
     closeSolutionModal();
     return;
   }
-  if(openSolutionUid) closeSolutionModal();
 
-  const box = document.getElementById('sol-' + uid);
+  const data = window.SOLUTION_DATA[uid];
+  if(!data) return;
+
+  const box = document.getElementById('solution-box');
+  const content = document.getElementById('solution-box-content');
   const backdrop = document.getElementById('modal-backdrop');
+
+  content.innerHTML = `
+    <div class="solution-question">
+      <span class="k">${data.number} · Question</span>
+      ${renderMarkdownish(data.prompt)}
+    </div>
+    <span class="solution-steps-label">Worked Solution</span>
+    <ol class="solution-steps">
+      ${(data.steps || []).map(s => `<li>${renderMarkdownish(s)}</li>`).join('')}
+    </ol>`;
+
   box.classList.add('active');
   backdrop.classList.add('active');
+  box.scrollTop = 0;
   openSolutionUid = uid;
 
   if(window.renderMathInElement){
-    renderMathInElement(box, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+    renderMathInElement(content, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
   }
 }
 
 function closeSolutionModal(){
   if(!openSolutionUid) return;
-  document.getElementById('sol-' + openSolutionUid).classList.remove('active');
+  document.getElementById('solution-box').classList.remove('active');
   document.getElementById('modal-backdrop').classList.remove('active');
   openSolutionUid = null;
 }
@@ -397,6 +424,8 @@ function bookQuestionSlidesHTML(bq, moduleId, qIdx){
     html += quizSlideHTML(bq.quick, qIdx, uid);
   }
 
+  window.SOLUTION_DATA[uid] = { number: bq.number, prompt: bq.prompt, steps: bq.steps };
+
   html += `
     <section>
       <span class="eyebrow">${bq.eyebrow || ''}</span>
@@ -405,17 +434,6 @@ function bookQuestionSlidesHTML(bq, moduleId, qIdx){
         <p>${renderMarkdownish(bq.prompt)}</p>
       </div>
       <button class="reveal-btn" onclick="toggleSolution('${uid}')">Show Full Solution</button>
-      <div class="solution-box" id="sol-${uid}">
-        <button class="solution-close" onclick="closeSolutionModal()">✕</button>
-        <div class="solution-question">
-          <span class="k">${bq.number} · Question</span>
-          ${renderMarkdownish(bq.prompt)}
-        </div>
-        <span class="solution-steps-label">Worked Solution</span>
-        <ol class="solution-steps">
-          ${(bq.steps || []).map(s => `<li>${renderMarkdownish(s)}</li>`).join('')}
-        </ol>
-      </div>
     </section>`;
 
   return html;
